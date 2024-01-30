@@ -1,0 +1,25 @@
+
+CREATE TABLE steam_spy_data (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    appid INT,
+    name VARCHAR(255),
+    developer VARCHAR(255),
+    publisher VARCHAR(255),
+    score_rank VARCHAR(255),
+    positive INT,
+    negative INT,
+    userscore INT,
+    owners VARCHAR(255),
+    average_forever INT,
+    average_2weeks INT,
+    median_forever INT,
+    median_2weeks INT,
+    price VARCHAR(255),
+    initialprice VARCHAR(255),
+    discount VARCHAR(255),
+    ccu INT,
+    languages VARCHAR(255),
+    genre VARCHAR(255),
+    tags JSON,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

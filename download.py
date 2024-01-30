@@ -32,6 +32,8 @@ def get_game_details(item):
         data = response.json()
         with open("output.json", "a", encoding="utf-8") as file:
             file.write(f'"{item}": {json.dumps(data, ensure_ascii=False, indent=4)},\n')
+    elif response.status_code == 504:
+        get_game_details(item)
     else:
         print(f"Erro ao fazer a solicitação para a página {item}. Código de status: {response.status_code}")
 
