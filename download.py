@@ -6,6 +6,22 @@ import time
 url = "https://steamspy.com/api.php"
 all_data = []
 
+def remove_last_comma(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        content = file.read()
+
+    # Find the last comma and its position
+    last_comma_index = content.rfind(',')
+    if last_comma_index != -1:
+        # Remove the last comma
+        content = content[:last_comma_index] + content[last_comma_index + 1:]
+
+        # Write the modified content back to the file
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(content)
+        print(f"Last comma removed from {file_path}")
+    else:
+        print("No comma found in the file.")
 
 def get_game_details(item):
     print("item :" + item)
@@ -39,6 +55,8 @@ with open("output.json", "w", encoding="utf-8") as file:
 
 with ThreadPoolExecutor() as executor:
     executor.map(get_game_details, all_data)
+
+remove_last_comma("output.json")
 
 with open("output.json", "a", encoding="utf-8") as file:
     file.write("}")
